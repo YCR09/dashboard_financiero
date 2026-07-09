@@ -239,6 +239,10 @@ def ventas():
 
                 st.plotly_chart(fig_4, use_container_width=True)
 
+        credito = df_estatus[df_estatus['estatus'] != 'cobrada']['total_ventas'].sum()
+        contado = df_estatus[df_estatus['estatus'] == 'cobrada']['total_ventas'].sum()
+        dif_cred_cont = contado - credito
+
         if len(df_ventas_mes['crecimiento']) != 1:
 
             st.divider()
@@ -251,6 +255,9 @@ def ventas():
             else:
                 
                 st.success(f'✅ ¡Excelente! hay Crecimiento en las ventas con respecto al mes anterior del **{aumento:,.2f}** % ✅')
+
+        if dif_cred_cont < 0:
+            st.error(f'⚠️ ¡Advertencia! las ventas a Crédito superan las ventas de Contado ⚠️') 
 
     else:
         st.warning("👈 Ve a la sección del menú 📤 Información y sube el archivo Excel a analizar")
