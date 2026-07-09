@@ -251,4 +251,4 @@ def finanzas():
                 )
       
     else:
-        st.warning("👈 Ve a la sección del menú 📤 Información en **Fuente de Datos** y selecciona una opción de datos para analizar")
+        st.warning("👈 Ve a la sección del menú 📤 **Información** en **Fuente de Datos** y selecciona una opción de datos para analizar")
