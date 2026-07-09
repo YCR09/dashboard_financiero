@@ -17,7 +17,7 @@ def datos():
         "**Fuente de Datos :**",
         (
             "Seleccione una opción...",
-            "📊 Datos de demostración",
+            "📝 Datos de demostración",
             "📁 Cargar archivo Excel",
             #"☁️ Google Drive Sheets"
         ),
@@ -30,7 +30,7 @@ def datos():
         #st.session_state["df_excel"] = None
         st.session_state.pop("df_excel", None)
 
-    elif opcion == "📊 Datos de demostración":
+    elif opcion == "📝 Datos de demostración":
         mensaje.empty()
         try:
             df = pd.read_excel("datos_demo.xlsx")
