@@ -16,23 +16,12 @@ def simulacion():
 
     st.markdown("---")
 
-    st.info("👈 Ve a la sección del menú lateral, ingresa : la **Inversión Inicial (€)**, los **Costos Fijos (€)** y el **Margen de Beneficio Bruto (%)**.")
-    st.markdown("---")
-
     # 1. ENTRADAS DE DATOS (Puedes conectarlo a tu archivo cargado)
     st.sidebar.header("Simulación de Datos")
-    inversion = (
-                    st.sidebar.slider(
-                        "Inversión Inicial (€)",
-                        min_value=100,
-                        max_value=900000,
-                        value=1000,
-                        step=200,
-                    )            
-                )
+    
         
     costos_fijos = st.sidebar.number_input(
-            "Costos Fijos Totales (€)",  
+            "**Costos Fijos Totales (€)**",  
             min_value=100.0, 
             value=2000.0, 
             step=100.0
@@ -40,18 +29,33 @@ def simulacion():
 
     porcentaje_beneficio = (
             st.sidebar.slider(
-                "Margen de Beneficio Bruto (%)",
+                "**Margen de Beneficio Bruto (%)**",
                 min_value=1,
                 max_value=100,
                 value=10,
                 step=1,
             )            
         )
+    st.sidebar.markdown("---")
+    inversion = (
+                    st.sidebar.slider(
+                        "**Inversión Inicial (€)**",
+                        min_value=100,
+                        max_value=900000,
+                        value=1000,
+                        step=200,
+                    )            
+                )
 
     #*********************  Simulación de Margen para el PE ************************
         
     st.markdown("## ✔ Simulador de Margen que calcula el Punto de Equilibrio a partir de los Costos Fijos")
+    
+
     st.success("📌 Factor Escala = Costos Fijos / (Inversión Inicial * Margen de Beneficio Bruto (%)) -> Punto de Equilibrio (€) = (Inversión Inicial * (1 + Margen de Beneficio Bruto (%)) * Factor Escala) ")
+    st.markdown("---")
+    st.info("✋ **¡ A L T O !... 👈** Para esta simulación, ve a la sección del menú lateral, ingresa los **Costos Fijos (€)** y el **Margen de Beneficio Bruto (%)**.")
+    st.markdown("---")
        
     #*********************  KPIs de PE ************************
     col1, col2, col3, col4 = st.columns(4)
@@ -120,7 +124,10 @@ def simulacion():
                
     st.divider()
     st.markdown("## ✔ Simulación de Cobertura de Costos de Ventas de Contado y a Crédito")
-    st.divider()
+    
+    st.markdown("---")
+    st.info("👈 Para esta simulación, ve a la sección del menú lateral, ingresa la **Inversión Inicial (€)**, los **Costos Fijos (€)** y el **Margen de Beneficio Bruto (%)**.")
+    st.markdown("---")
           
     col1, col2, col3, col4 = st.columns(4)
     with col1:
@@ -137,7 +144,7 @@ def simulacion():
                 label="Utilidad Bruta (€)",
                 value=f"€{utilidad - costos_fijos:,.2f}",
                 help="Es la utilidad bruta después de cubrir los costos fijos.",
-                delta=f"Utilidad €{utilidad:,.2f} - Costos Fijos €{costos_fijos:,.2f}",
+                delta=f"**Utilidad €{utilidad:,.2f} - Costos Fijos €{costos_fijos:,.2f}**",
                 delta_color="off"
                 )
             
