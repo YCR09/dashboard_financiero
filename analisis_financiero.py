@@ -103,8 +103,8 @@ def finanzas():
                     label="Diferencia de Margen (DM)",
                     value=f"+{incremento_margen_requerido * 100:.1f}%",
                     help="Es la diferencia en porcentaje entre el margen de Contribución mínima y el % que representan los costos operativos con lo facturado.",
-                    delta=f"⚠️ Zona de Pérdida",
-                    delta_color="inverse",
+                    delta=f"-⚠️ Zona de Pérdida",
+                    #delta_color="inverse",
                 )
             else:
                 # 1. Calculamos la variable de forma independiente en su propia línea
@@ -118,13 +118,21 @@ def finanzas():
                     delta_color="normal",
                 )
                           
-
         with col3:
             utilidad_actual = (compras_actuales * margen_actual_pct/100) - costos_fijos
-            st.metric(label="Beneficio Neto Actual (BNA) (€)",
-                       value=f"€ {utilidad_actual:,.2f}",
-                       help="Es la utilidad neta que se obtiene tras cubrir todos los costos fijos.",
-                       )
+            if utilidad_actual <= 0:
+                st.metric(label="Beneficio Neto Actual (BNA) (€)",
+                        value=f"€ {utilidad_actual:,.2f}",
+                        help="Es la utilidad neta que se obtiene tras cubrir todos los costos fijos.",
+                        delta=f"-⚠️ Zona de Pérdida",
+                        )
+            else:
+                st.metric(label="Beneficio Neto Actual (BNA) (€)",
+                        value=f"€ {utilidad_actual:,.2f}",
+                        help="Es la utilidad neta que se obtiene tras cubrir todos los costos fijos.",
+                        delta=f"✅ Zona de Ganancia",
+                        delta_color="normal",
+                        )
 
         st.divider()
      
