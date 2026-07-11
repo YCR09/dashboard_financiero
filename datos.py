@@ -18,7 +18,7 @@ def datos():
         (
             "Seleccione una opción...",
             "📝 Datos de demostración",
-            "📁 Cargar archivo Excel",
+            #"📁 Cargar archivo Excel",
             #"☁️ Google Drive Sheets"
         ),
         index=0
